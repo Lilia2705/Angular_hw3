@@ -1,0 +1,6 @@
+.redBorder {
+  border: 2px solid red;
+  width: 20%;
+  background-color: rgba(255, 0, 0, 0.4);
+}
+
