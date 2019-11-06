@@ -1,0 +1,135 @@
+
+  <div
+     [ngClass]= "house.owner.is_blocked ? 'redBorder' : 'none' "
+     *ngFor = "let house of houses">
+
+        City: {{house.city}}
+        <br>
+        Street: {{house.street}}
+        <br>
+
+    <button (click)= "showFullInfo(house.id)"
+            [innerText]="allInfo ? 'Show less' : 'Show more'">
+    </button>
+    <br>
+
+    <div *ngIf= "showedHouseIndex === house.id">
+        Price: {{house.price}}
+        <br>
+        Owner: {{house.owner.name}}
+        <br>
+        Owner's surname: {{house.owner.surname}}
+
+      <br>
+         Owner's email: {{house.owner.email}}
+
+      <br>
+    </div>
+
+  </div>
+         <br>
+    <button (click)="showRegisterForm()" type = "submit" value ="Register" class="buttonRegister">
+      Register
+    </button>
+
+    <button (click)="showLoginForm()" type = "submit" class ="button">
+      Login
+    </button>
+
+    <button (click)="showRegisterHouseForm()" type = "submit" class ="button">
+      Register house
+    </button>
+    <br>
+    <br>
+  <form *ngIf = "isRegisterClicked"
+        (ngSubmit)= "registerUser(registrationForm)"
+        #registrationForm = "ngForm">
+    <label
+            [ngStyle]="{color: nameInput.invalid ? 'red' : 'black'}">
+      Name:
+    </label>
+    <input type= "text" name="name" value = 'name'
+           [(ngModel)] = "userToCreate.name"
+            #nameInput = "ngModel"
+            required
+            minlength="4">
+    <label
+      [ngStyle]="{color: emailInput.invalid ? 'red' : 'black'}">
+      Email:
+    </label>
+    <input type= "email" name="email" value = 'email'
+           [(ngModel)] = "userToCreate.email"
+           #emailInput = "ngModel"
+           email
+           required
+           minlength="4">
+    <label
+      [ngStyle]="{color: passwordInput.invalid ? 'red' : 'black'}">
+      Password:
+    </label>
+    <input type= "password" name = "password" value = 'password'
+           [(ngModel)] = "userToCreate.password"
+           [(ngModel)] = "userToCreate.password"
+
+    #passwordInput = "ngModel"
+           required
+           minlength="6">
+      <br>
+      <br>
+    <button [disabled]="!registrationForm.valid">
+      Submit
+    </button>
+  </form>
+
+  <form *ngIf = "isLoginClicked" (ngSubmit)="loginUser()"
+  #loginUserForm = ngForm>
+    <p>Email:</p>
+    <input type= "email" name="email" value="email"
+           [(ngModel)]="findUser.email"
+            email>
+    <p> Password:</p>
+    <input type= "password" name= "password" value="password"
+           [(ngModel)]="findUser.password"
+    >
+        <br>
+        <br>
+     <button>Submit</button>
+
+  </form>
+
+  <form *ngIf = "isRegisterHouseClicked"
+    (ngSubmit)= "registerHouse (registrationFormHouse)"
+    #registrationFormHouse= "ngForm">
+    <label
+      [ngStyle]="{color: cityInput.invalid ? 'red' : 'black'}">
+      City:
+    </label>
+    <input type= "text" name = "street" value = 'city'
+           [(ngModel)] = "userToCreate.name"
+           #cityInput = "ngModel"
+           required
+           minlength="3">
+    <label
+      [ngStyle]="{color: streetInput.invalid ? 'red' : 'black'}">
+      Street:
+    </label>
+    <input type= "text" name="street" value = 'street'
+           [(ngModel)] = "userToCreate.email"
+           #streetInput = "ngModel"
+           required
+           minlength="3">
+    <label
+      [ngStyle]="{color: priceInput.invalid ? 'red' : 'black'}">
+      Price:
+    </label>
+    <input type= "text" name = "price" value = 'price'
+           [(ngModel)] = "userToCreate.password"
+           #priceInput = "ngModel"
+           required
+           minlength="6">
+    <br>
+    <br>
+    <button [disabled]="!registrationFormHouse.valid">
+        Submit
+  </button>
+  </form>
