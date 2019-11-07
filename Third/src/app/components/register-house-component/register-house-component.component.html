@@ -1,0 +1,38 @@
+
+<form
+      (ngSubmit)= "registerThisHouse()"
+      #registrationFormHouse= "ngForm">
+  <label
+    [ngStyle]="{color: cityInput.invalid ? 'red' : 'black'}">
+    City:
+  </label>
+  <input type= "text" name = "city" value = 'city'
+         [(ngModel)] = "houseToCreate.city"
+         #cityInput = "ngModel"
+         required
+         minlength="3">
+  <label
+    [ngStyle]="{color: streetInput.invalid ? 'red' : 'black'}">
+    Street:
+  </label>
+  <input type= "text" name="street" value = 'street'
+         [(ngModel)] = "houseToCreate.street"
+         #streetInput = "ngModel"
+         required
+         minlength="3">
+  <label
+    [ngStyle]="{color: priceInput.invalid ? 'red' : 'black'}">
+    Price:
+  </label>
+  <input type= "text" name = "price" value = 'price'
+         [(ngModel)] = "houseToCreate.price"
+         #priceInput = "ngModel"
+         required
+         minlength="6">
+  <br>
+  <br>
+  <button [disabled]="!registrationFormHouse.valid">
+    Submit
+  </button>
+</form>
+<br>

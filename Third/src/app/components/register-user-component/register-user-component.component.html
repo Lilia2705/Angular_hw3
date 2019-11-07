@@ -1,0 +1,42 @@
+
+<br>
+<form
+      (ngSubmit)= "registerThisUser(registrationForm)"
+      #registrationForm = "ngForm">
+  <label
+    [ngStyle]="{color: nameInput.invalid ? 'red' : 'black'}">
+    Name:
+  </label>
+  <input type= "text" name="name" value = 'name'
+         [(ngModel)] = "userToCreate.name"
+         #nameInput = "ngModel"
+         required
+         minlength="4">
+  <label
+    [ngStyle]="{color: emailInput.invalid ? 'red' : 'black'}">
+    Email:
+  </label>
+  <input type= "email" name="email" value = 'email'
+         [(ngModel)] = "userToCreate.email"
+         #emailInput = "ngModel"
+         email
+         required
+         minlength="4">
+  <label
+    [ngStyle]="{color: passwordInput.invalid ? 'red' : 'black'}">
+    Password:
+  </label>
+  <input type= "password" name = "password" value = 'password'
+         [(ngModel)] = "userToCreate.password"
+
+         #passwordInput = "ngModel"
+         required
+         minlength="6">
+  <br>
+  <br>
+  <button [disabled]="!registrationForm.valid">
+    Submit
+  </button>
+  <br>
+</form>
+<br>

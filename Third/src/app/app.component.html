@@ -1,0 +1,21 @@
+<app-register-user-component
+  [userToCreate]="userToCreate"
+  (createUser)="registerUser($event)"
+></app-register-user-component>
+
+<app-login-user-component
+  [loginUser] = "loginUser"
+  (loginedUser) = loginUserFun($event)>
+</app-login-user-component>
+
+<app-register-house-component
+  [houseToCreate]="houseToCreate"
+  (createHouse)="registerHouse($event)"
+></app-register-house-component>
+
+<app-house-components
+  *ngFor="let house of houses"
+  [house] = "house"
+></app-house-components>
+
+<!--{{ 5 | changeRate}}-->
